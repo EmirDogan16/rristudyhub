@@ -1,5 +1,5 @@
 /* =========================================================
-   CASE STUDY MASTERCLASS — Tutorial & Practice Module
+   CASE STUDY MASTERCLASS — Full Tutorial + Worked Examples
    ========================================================= */
 
 function openCaseStudyTutorial() {
@@ -18,286 +18,268 @@ function renderCaseStudy() {
   const lang = state.language;
   const t = lang === 'tr';
 
-  const examFormat = t ? `
-    <div class="concept-grid">
-      <div class="concept-card" style="border-color:rgba(236,72,153,0.3);">
-        <div class="concept-card-title" style="color:#ec4899;">Question 1: True/False</div>
-        <div class="concept-card-text">
-          <strong>12 soru</strong> × 1.5 puan = <strong>18 puan</strong><br><br>
-          • Doğru/Yanlış seç<br>• Kısa gerekçe yaz (1-2 cümle)<br>• Her soru: 0.5 T/F + 1.0 gerekçe<br>• Yanlış seçim + doğru gerekçe = <strong>0 puan!</strong>
-        </div>
-      </div>
-      <div class="concept-card" style="border-color:rgba(168,85,247,0.3);">
-        <div class="concept-card-title" style="color:#a855f7;">Question 2: Case Study</div>
-        <div class="concept-card-text">
-          <strong>1 senaryo</strong> + alt sorular = <strong>12 puan</strong><br><br>
-          • Gerçekçi bir AI senaryosu verilir<br>• 3-5 alt soru sorulur<br>• Kurs kavramlarını uygulamanı ister<br>• Sınav notunun <strong>%40'ı!</strong>
-        </div>
-      </div>
-      <div class="concept-card" style="border-color:rgba(34,197,94,0.3);">
-        <div class="concept-card-title" style="color:#22c55e;">Notlama</div>
-        <div class="concept-card-text">
-          <strong>Toplam:</strong> 30 puan<br><strong>Geçme:</strong> 21/30 (70%)<br><strong>PI-grade:</strong> (P-E)/(T-E)×10<br><strong>Örnek:</strong> 25 puan = (25-9)/(30-9)×10 = 7.6
-        </div>
-      </div>
-      <div class="concept-card" style="border-color:rgba(251,191,36,0.3);">
-        <div class="concept-card-title" style="color:#fbbf24;">⏱️ Süre Stratejisi</div>
-        <div class="concept-card-text">
-          <strong>Toplam:</strong> ~60 dakika<br>• Q1 (T/F): ~18 dk<br>• Q2 (Case): ~35 dk<br>• Gözden geçirme: ~7 dk<br><br><strong>⚠️ Case Study'ye en çok zaman ayır!</strong>
-        </div>
-      </div>
-    </div>` : `
-    <div class="concept-grid">
-      <div class="concept-card" style="border-color:rgba(236,72,153,0.3);">
-        <div class="concept-card-title" style="color:#ec4899;">Question 1: True/False</div>
-        <div class="concept-card-text">
-          <strong>12 questions</strong> × 1.5 pts = <strong>18 points</strong><br><br>
-          • Select True or False<br>• Write brief justification (1-2 sentences)<br>• Each Q: 0.5 T/F + 1.0 justification<br>• Wrong selection + correct justification = <strong>0 points!</strong>
-        </div>
-      </div>
-      <div class="concept-card" style="border-color:rgba(168,85,247,0.3);">
-        <div class="concept-card-title" style="color:#a855f7;">Question 2: Case Study</div>
-        <div class="concept-card-text">
-          <strong>1 scenario</strong> + sub-questions = <strong>12 points</strong><br><br>
-          • A realistic AI scenario is given<br>• 3-5 sub-questions asked<br>• Requires applying course concepts<br>• This is <strong>40% of the exam!</strong>
-        </div>
-      </div>
-      <div class="concept-card" style="border-color:rgba(34,197,94,0.3);">
-        <div class="concept-card-title" style="color:#22c55e;">Grading</div>
-        <div class="concept-card-text">
-          <strong>Total:</strong> 30 points<br><strong>Pass:</strong> 21/30 (70%)<br><strong>PI-grade:</strong> (P-E)/(T-E)×10<br><strong>Example:</strong> 25 pts = (25-9)/(30-9)×10 = 7.6
-        </div>
-      </div>
-      <div class="concept-card" style="border-color:rgba(251,191,36,0.3);">
-        <div class="concept-card-title" style="color:#fbbf24;">⏱️ Time Strategy</div>
-        <div class="concept-card-text">
-          <strong>Total:</strong> ~60 minutes<br>• Q1 (T/F): ~18 min<br>• Q2 (Case): ~35 min<br>• Review: ~7 min<br><br><strong>⚠️ Allocate most time to Case Study!</strong>
-        </div>
-      </div>
-    </div>`;
-
-  const steps = [
-    {
-      color: '#ec4899', icon: '🔍',
-      titleEN: 'IDENTIFY THE ETHICAL ISSUE', titleTR: 'ETİK SORUNU TANIMLA',
-      contentEN: `<strong>What to do:</strong> Read the scenario and clearly state the ethical issue.<br><br><strong>Template:</strong> "This scenario presents an ethical issue concerning [X], creating tension between [Y ethical principle] and [Z goal]."<br><br><strong>⚠️ Tip:</strong> Identify the issue from MULTIPLE angles — don't be one-dimensional!`,
-      contentTR: `<strong>Ne yapmalısın:</strong> Senaryoyu oku ve etik sorunu net ifade et.<br><br><strong>Şablon:</strong> "Bu senaryo [X] ile ilgili bir etik sorun sunmaktadır, [Y etik ilke] ile [Z hedef] arasında gerilim vardır."<br><br><strong>⚠️ İpucu:</strong> Sorunu BİRDEN FAZLA açıdan tanımla — tek boyutlu bakma!`
-    },
-    {
-      color: '#f59e0b', icon: '📚',
-      titleEN: 'APPLY CONCEPTS & FRAMEWORKS', titleTR: 'KAVRAM VE ÇERÇEVELERİ UYGULA',
-      contentEN: `<strong>KEY RULE:</strong> Define the concept AND apply it to the scenario!<br><br><strong>Frameworks:</strong> 6 Ethical Lenses • AREA Framework • Bias Types • GDPR Principles • AI Act Risk Levels • Trustworthy AI • Human Oversight<br><br>❌ WRONG: "GDPR includes data minimization."<br>✅ RIGHT: "The GDPR data minimization principle is violated here because the company collects health data solely for advertising — irrelevant to the stated purpose."`,
-      contentTR: `<strong>TEMEL KURAL:</strong> Kavramı tanımla VE senaryoya uygula!<br><br><strong>Çerçeveler:</strong> 6 Ethical Lens • AREA • Bias Türleri • GDPR İlkeleri • AI Act Risk Seviyeleri • Trustworthy AI • Human Oversight<br><br>❌ YANLIŞ: "GDPR veri minimizasyonu ilkesini içerir."<br>✅ DOĞRU: "GDPR'ın veri minimizasyonu ilkesi bu senaryoda ihlal edilmektedir çünkü şirket sağlık verisini sadece reklam amacıyla toplamaktadır."`
-    },
-    {
-      color: '#22c55e', icon: '🎭',
-      titleEN: 'ANALYZE STAKEHOLDERS & IMPACTS', titleTR: 'PAYDAŞ VE ETKİLERİ ANALİZ ET',
-      contentEN: `<strong>Stakeholders:</strong> Users/Citizens • Minorities/Vulnerable groups • Company/Government • Society/Future generations<br><br><strong>Template:</strong> "[Stakeholder] is affected by [specific impact] because [reasoning]. This is problematic from the [ethical lens] perspective."`,
-      contentTR: `<strong>Paydaşlar:</strong> Kullanıcılar/Vatandaşlar • Azınlıklar/Savunmasız gruplar • Şirket/Hükümet • Toplum/Gelecek nesiller<br><br><strong>Şablon:</strong> "[Paydaş] bu durumdan [şu şekilde] etkilenmektedir çünkü [gerekçe]. Bu [ethical lens] açısından sorunludur."`
-    },
-    {
-      color: '#3b82f6', icon: '💡',
-      titleEN: 'PROPOSE SOLUTIONS', titleTR: 'ÇÖZÜM ÖNERİLERİ SUN',
-      contentEN: `<strong>Technical:</strong> DPIA • Privacy by Design • Bias audits • XAI<br><strong>Organizational:</strong> DPO • Ethics committee • Training<br><strong>Regulatory:</strong> AI Act compliance • GDPR Art. 35<br><strong>User-centric:</strong> Meaningful consent • Opt-out • Counterfactual explanations<br><br><strong>⚠️ Link each solution to a SPECIFIC problem!</strong>`,
-      contentTR: `<strong>Teknik:</strong> DPIA • Privacy by Design • Bias testleri • XAI<br><strong>Organizasyonel:</strong> DPO • Etik kurul • Eğitim<br><strong>Düzenleyici:</strong> AI Act uyumu • GDPR Madde 35<br><strong>Kullanıcı odaklı:</strong> Anlamlı rıza • Opt-out • Counterfactual açıklamalar<br><br><strong>⚠️ Her çözümü SENARYODAKİ somut soruna bağla!</strong>`
-    },
-    {
-      color: '#a855f7', icon: '⚖️',
-      titleEN: 'CRITICAL EVALUATION', titleTR: 'KRİTİK DEĞERLENDİRME',
-      contentEN: `<strong>Template:</strong> "While this solution offers [advantage], it presents [limitation/trade-off]. Furthermore, [alternative perspective] should be considered."<br><br><strong>Discuss:</strong> Innovation vs safety • Individual rights vs societal benefit • Technical vs ethical • Short-term vs long-term<br><br><strong>🔑 This step separates average from excellent — REQUIRED for high marks!</strong>`,
-      contentTR: `<strong>Şablon:</strong> "Bu çözüm [avantaj] sunarken [sınırlılık/trade-off] da mevcuttur. Ayrıca [alternatif bakış açısı] da değerlendirilmelidir."<br><br><strong>Tartış:</strong> İnovasyon vs güvenlik • Bireysel haklar vs toplumsal fayda • Teknik vs etik • Kısa vade vs uzun vade<br><br><strong>🔑 Bu adım sizi diğerlerinden ayırır — yüksek not için ŞART!</strong>`
-    }
-  ];
-
-  let stepsHtml = steps.map((s, i) => `
-    <div class="concept-card" style="border-left:4px solid ${s.color};padding-left:20px;">
-      <div class="concept-card-title" style="color:${s.color};font-size:1.1rem;">Step ${i+1}: ${s.icon} ${t ? s.titleTR : s.titleEN}</div>
-      <div class="concept-card-text">${t ? s.contentTR : s.contentEN}</div>
-    </div>`).join('');
-
-  const scenarios = [
-    {
-      titleEN: 'Scenario 1: AI Recruitment System', titleTR: 'Senaryo 1: AI İşe Alım Sistemi',
-      descEN: 'A company uses AI for CV screening. Trained on historical data. Female hiring rate is 40% lower than males.',
-      descTR: 'Bir şirket CV tarama için AI kullanıyor. Geçmiş verilere dayalı. Kadın işe alım oranı erkeklerden %40 düşük.',
-      keysEN: '• <strong>Historical Bias</strong> — past data reflects gender inequality<br>• <strong>AI Act High Risk</strong> — employment AI<br>• <strong>Justice Lens</strong> — unequal outcomes<br>• <strong>GDPR Art. 22</strong> — automated decisions with legal effects<br>• <strong>Impossibility Theorem</strong> — choosing fairness metrics<br>• <strong>Solutions:</strong> Bias auditing, diverse training data, human-in-the-loop, DPIA',
-      keysTR: '• <strong>Historical Bias</strong> — geçmiş veriler toplumsal cinsiyet eşitsizliğini yansıtıyor<br>• <strong>AI Act High Risk</strong> — istihdam AI\'ı<br>• <strong>Justice Lens</strong> — eşitsiz sonuçlar<br>• <strong>GDPR Art. 22</strong> — otomatik karar alma<br>• <strong>İmkansızlık Teoremi</strong> — adalet metrikleri seçimi<br>• <strong>Çözüm:</strong> Bias testi, çeşitli eğitim verisi, human-in-the-loop, DPIA'
-    },
-    {
-      titleEN: 'Scenario 2: Smart City Surveillance', titleTR: 'Senaryo 2: Akıllı Şehir Gözetlemi',
-      descEN: 'A city plans city-wide facial recognition cameras for crime prevention. Citizens protest privacy concerns.',
-      descTR: 'Bir belediye suç önleme için şehir genelinde yüz tanıma kamerası kurmayı planlıyor. Vatandaşlar protesto ediyor.',
-      keysEN: '• <strong>Panopticon</strong> — digital panopticon effect<br>• <strong>Chilling Effect</strong> — pressure on free speech<br>• <strong>AI Act Unacceptable Risk</strong> — real-time biometric ID in public = BANNED<br>• <strong>Proportionality</strong> — is mass surveillance proportionate?<br>• <strong>Function Creep</strong> — crime prevention → social control<br>• <strong>Solutions:</strong> Targeted surveillance, DPIA, citizen consultation',
-      keysTR: '• <strong>Panopticon</strong> — dijital panoptikon etkisi<br>• <strong>Chilling Effect</strong> — ifade özgürlüğü baskısı<br>• <strong>AI Act Unacceptable Risk</strong> — gerçek zamanlı biyometrik tanıma = YASAK<br>• <strong>Proportionality</strong> — toplu gözetleme orantılı mı?<br>• <strong>Function Creep</strong> — suç önleme → toplumsal kontrol<br>• <strong>Çözüm:</strong> Hedefli gözetim, DPIA, vatandaş danışma'
-    },
-    {
-      titleEN: 'Scenario 3: AI Medical Diagnosis', titleTR: 'Senaryo 3: AI Sağlık Teşhisi',
-      descEN: 'A hospital uses AI to diagnose diseases from X-rays. 95% accuracy but cannot explain decisions. Misdiagnoses have caused harm.',
-      descTR: 'Bir hastane röntgenlerden teşhis koyan AI kullanıyor. %95 doğruluk ama kararlarını açıklayamıyor. Yanlış teşhisler zarar verdi.',
-      keysEN: '• <strong>Black Box Problem</strong> — model unexplainable, XAI needed<br>• <strong>Human-in-the-loop</strong> — doctor must review every diagnosis<br>• <strong>Responsibility Gap</strong> — who is responsible for misdiagnosis?<br>• <strong>LIME/SHAP</strong> — technical solutions for explanations<br>• <strong>AI Act High Risk</strong> — medical AI<br>• <strong>Solutions:</strong> XAI implementation, human oversight, bias testing, liability framework',
-      keysTR: '• <strong>Black Box Problem</strong> — model açıklanamaz, XAI gerekli<br>• <strong>Human-in-the-loop</strong> — doktor her teşhisi gözden geçirmeli<br>• <strong>Responsibility Gap</strong> — yanlış teşhiste kim sorumlu?<br>• <strong>LIME/SHAP</strong> — açıklama için teknik çözümler<br>• <strong>AI Act High Risk</strong> — tıbbi AI<br>• <strong>Çözüm:</strong> XAI implementasyonu, insan denetimi, bias testi, sorumluluk çerçevesi'
-    },
-    {
-      titleEN: 'Scenario 4: Social Media Content Moderation', titleTR: 'Senaryo 4: Sosyal Medya İçerik Moderasyonu',
-      descEN: 'AI detects hate speech but misclassifies certain languages/cultures. Certain communities\' content removed disproportionately.',
-      descTR: 'AI nefret söylemi tespit ediyor ama bazı dilleri/kültürleri yanlış sınıflandırıyor. Belirli toplulukların içerikleri fazla kaldırılıyor.',
-      keysEN: '• <strong>Representation Bias</strong> — training data doesn\'t cover all languages<br>• <strong>Rights Lens</strong> — freedom of expression<br>• <strong>Justice Lens</strong> — disproportionate impact<br>• <strong>Counterfactual</strong> — "what needs to change to keep content?"<br>• <strong>Solutions:</strong> Multilingual training data, appeal mechanism, human review',
-      keysTR: '• <strong>Representation Bias</strong> — eğitim verisi tüm dilleri kapsamıyor<br>• <strong>Rights Lens</strong> — ifade özgürlüğü<br>• <strong>Justice Lens</strong> — orantısız etki<br>• <strong>Counterfactual</strong> — "içeriğin kalması için ne değişmeli?"<br>• <strong>Çözüm:</strong> Çok dilli eğitim verisi, itiraz mekanizması, insan incelemesi'
-    },
-    {
-      titleEN: 'Scenario 5: Autonomous Vehicle Ethics', titleTR: 'Senaryo 5: Otonom Araç Etiği',
-      descEN: 'An autonomous vehicle company develops crash scenario algorithms. Ethical dilemma: protect passengers or pedestrians?',
-      descTR: 'Otonom araç şirketi kaza senaryosu algoritması geliştiriyor. Etik ikilem: yolcuları mı yayaları mı koru?',
-      keysEN: '• <strong>Deontology vs Utilitarianism</strong> — rule-based vs consequence-based<br>• <strong>Meaningful Human Control</strong> — life-and-death decisions<br>• <strong>Responsibility Gap</strong> — who is responsible in a crash?<br>• <strong>Trustworthy AI</strong> — human agency & oversight<br>• <strong>Solutions:</strong> Multi-stakeholder ethics committee, transparent rules, human-in-command',
-      keysTR: '• <strong>Deontology vs Utilitarianism</strong> — kural vs sonuç temelli etik<br>• <strong>Meaningful Human Control</strong> — hayat-ölüm kararları<br>• <strong>Responsibility Gap</strong> — kazada kim sorumlu?<br>• <strong>Trustworthy AI</strong> — insan temsilciliği ve denetimi<br>• <strong>Çözüm:</strong> Çok paydaşlı etik komitesi, şeffaf kurallar, human-in-command'
-    }
-  ];
-
-  let scenariosHtml = scenarios.map(s => `
-    <div class="concept-card" style="cursor:pointer;" onclick="this.querySelector('.pa').classList.toggle('open')">
-      <div class="concept-card-title" style="color:#06b6d4;">${t ? s.titleTR : s.titleEN}</div>
-      <div class="concept-card-text" style="font-size:0.88rem;">${t ? s.descTR : s.descEN}</div>
-      <div class="pa" style="max-height:0;overflow:hidden;transition:max-height 0.5s ease;">
-        <div style="margin-top:14px;padding-top:14px;border-top:1px solid var(--border);font-size:0.85rem;line-height:1.8;color:var(--text-muted);">
-          <strong style="color:#22c55e;">${t ? 'Anahtar kavramlar:' : 'Key concepts:'}</strong><br>${t ? s.keysTR : s.keysEN}
-        </div>
-      </div>
-    </div>`).join('');
-
-  const goldenPhrases = t ?
-    `• "Bu, <strong>[kavram]</strong> ilkesiyle ilişkilidir çünkü..."<br>• "GDPR'ın <strong>[ilke]</strong> ilkesi bu senaryoda ihlal edilmektedir çünkü..."<br>• "Bu durum <strong>[bias türü]</strong> riski taşımaktadır çünkü eğitim verisi..."<br>• "EU AI Act kapsamında bu sistem <strong>[risk seviyesi]</strong> olarak sınıflandırılır çünkü..."<br>• "Bu senaryoda <strong>[ethical lens]</strong> açısından bakıldığında..."<br>• "Proportionality gereği <strong>daha az invaziv alternatifler</strong> değerlendirilmelidir."<br>• "Önerim <strong>Privacy by Design</strong> ve <strong>human-in-the-loop</strong> mekanizmasıdır."<br>• "Ancak bu çözümün <strong>sınırlılıkları</strong> mevcuttur: [trade-off]"<br>• "Sonuç olarak, <strong>[kavram]</strong> ve <strong>[kavram]</strong> arasındaki gerilim dikkatli dengeleme gerektirir."` :
-    `• "This relates to <strong>[concept]</strong> because..."<br>• "The GDPR <strong>[principle]</strong> is violated here because..."<br>• "This carries the risk of <strong>[bias type]</strong> because the training data..."<br>• "Under the AI Act, this is <strong>[risk level]</strong> because..."<br>• "From the <strong>[ethical lens]</strong> perspective..."<br>• "Under proportionality, <strong>less invasive alternatives</strong> should be considered."<br>• "I recommend <strong>Privacy by Design</strong> and <strong>human-in-the-loop</strong> oversight."<br>• "However, this solution has <strong>limitations</strong>: [trade-off]"<br>• "The tension between <strong>[concept]</strong> and <strong>[concept]</strong> requires careful balancing."`;
-
-  const markingCriteria = t ? `
-    <div class="concept-grid">
-      <div class="concept-card" style="border-color:rgba(34,197,94,0.3);">
-        <div class="concept-card-title" style="color:#22c55e;">Tam Puan (10-12/12)</div>
-        <div class="concept-card-text">✅ Etik sorunu doğru tanımlıyor<br>✅ Birden fazla kavram uyguluyor<br>✅ Kavramları SENARYOYA bağlıyor<br>✅ Farklı paydaş perspektifleri<br>✅ Somut çözümler<br>✅ Trade-off tartışması<br>✅ Kendi argümanını geliştiriyor</div>
-      </div>
-      <div class="concept-card" style="border-color:rgba(251,191,36,0.3);">
-        <div class="concept-card-title" style="color:#fbbf24;">Orta Puan (5-9/12)</div>
-        <div class="concept-card-text">⚠️ Sorunu kısmen tanımlıyor<br>⚠️ Kavram tanımlıyor ama senaryoya bağlamıyor<br>⚠️ Tek perspektif<br>⚠️ Yüzeysel çözümler<br>⚠️ Trade-off yok</div>
-      </div>
-      <div class="concept-card" style="border-color:rgba(239,68,68,0.3);">
-        <div class="concept-card-title" style="color:#ef4444;">Düşük Puan (0-4/12)</div>
-        <div class="concept-card-text">❌ Sorunu tanımlayamıyor<br>❌ Yanlış/ilgisiz kavramlar<br>❌ Sadece tanım, uygulama yok<br>❌ Senaryo ile bağlantı yok<br>❌ Çözüm yok</div>
-      </div>
-    </div>` : `
-    <div class="concept-grid">
-      <div class="concept-card" style="border-color:rgba(34,197,94,0.3);">
-        <div class="concept-card-title" style="color:#22c55e;">Full Marks (10-12/12)</div>
-        <div class="concept-card-text">✅ Correctly identifies ethical issue<br>✅ Applies multiple concepts<br>✅ Links concepts TO SCENARIO<br>✅ Multiple stakeholder perspectives<br>✅ Concrete solutions<br>✅ Trade-off discussion<br>✅ Develops own argumentation</div>
-      </div>
-      <div class="concept-card" style="border-color:rgba(251,191,36,0.3);">
-        <div class="concept-card-title" style="color:#fbbf24;">Mid Marks (5-9/12)</div>
-        <div class="concept-card-text">⚠️ Partially identifies issue<br>⚠️ Defines but doesn't connect to scenario<br>⚠️ Single perspective<br>⚠️ Generic solutions<br>⚠️ No trade-off discussion</div>
-      </div>
-      <div class="concept-card" style="border-color:rgba(239,68,68,0.3);">
-        <div class="concept-card-title" style="color:#ef4444;">Low Marks (0-4/12)</div>
-        <div class="concept-card-text">❌ Cannot identify issue<br>❌ Incorrect/irrelevant concepts<br>❌ Only defines, doesn't apply<br>❌ No connection to scenario<br>❌ No solutions</div>
-      </div>
-    </div>`;
-
-  const mistakes = [
-    { titleEN: 'Textbook Copying', titleTR: 'Ders Kitabı Kopyalama',
-      descEN: 'Defining concepts without applying them. "GDPR is a regulation" is not enough — connect it to the scenario!',
-      descTR: 'Kavramı tanımlayıp bırakmak. "GDPR bir düzenlemedir" yetmez — senaryoya bağla!' },
-    { titleEN: 'Single Perspective', titleTR: 'Tek Perspektif',
-      descEN: 'Only looking from one angle. Use at least 2-3 different ethical lenses.',
-      descTR: 'Sadece tek açıdan bakmak. En az 2-3 farklı ethical lens kullan.' },
-    { titleEN: 'Analysis Without Solutions', titleTR: 'Çözümsüz Analiz',
-      descEN: 'Analyzing without proposing solutions. Every analysis should end with a recommendation.',
-      descTR: 'Problemi analiz edip çözüm önermemek. Her analiz bir çözüm ile bitmelidir.' },
-    { titleEN: 'Listing Irrelevant Concepts', titleTR: 'İlgisiz Kavram Sıralama',
-      descEN: 'Writing everything you know. Only use concepts RELEVANT to the scenario. Quality > Quantity!',
-      descTR: 'Bildiğin her şeyi yazmak. Sadece SENARYOYLA İLGİLİ kavramları kullan. Kalite > Miktar!' },
-    { titleEN: 'Unstructured Answers', titleTR: 'Yapısız Cevap',
-      descEN: 'Messy paragraphs. Use numbered, organized paragraphs. Highlight concept names.',
-      descTR: 'Düzensiz paragraflar. Numaralı, düzenli paragraflar yaz. Kavram isimlerini belirginleştir.' }
-  ];
-
-  let mistakesHtml = mistakes.map(m => `
-    <div style="padding:14px 18px;background:rgba(239,68,68,0.06);border:1px solid rgba(239,68,68,0.15);border-radius:10px;">
-      <strong style="color:#ef4444;">${t ? m.titleTR : m.titleEN}</strong>
-      <p style="color:var(--text-muted);margin-top:6px;font-size:0.88rem;">${t ? m.descTR : m.descEN}</p>
-    </div>`).join('');
-
-  const checklist = t ?
-    `<strong style="color:#ec4899;">🔒 GİZLİLİK:</strong> Kişisel veri? Özel kategori? Rıza? Purpose limitation? Data minimization?<br>
-     <strong style="color:#3b82f6;">⚖️ ADALET:</strong> Bias riski? Hangi tür? Savunmasız gruplar? İmkansızlık teoremi?<br>
-     <strong style="color:#22c55e;">🔍 ŞEFFAFLIK:</strong> Kara kutu mu? XAI gerekli mi? LIME/SHAP? Kullanıcılar bilgilendiriliyor mu?<br>
-     <strong style="color:#f59e0b;">👤 İNSAN DENETİMİ:</strong> Hangi seviye? In/on/command? Meaningful human control?<br>
-     <strong style="color:#a855f7;">📋 DÜZENLEME:</strong> AI Act risk seviyesi? DPIA? DPO? Provider/Deployer? Art. 22?<br>
-     <strong style="color:#ef4444;">👁️ GÖZETİM:</strong> Panopticon? Function creep? Chilling effect? Proportionality?<br>
-     <strong style="color:#06b6d4;">🌐 KÜRESEL:</strong> Trustworthy AI? UNESCO? Ethics washing? Responsibility gap? IP?` :
-    `<strong style="color:#ec4899;">🔒 PRIVACY:</strong> Personal data? Special category? Consent? Purpose limitation? Data minimization?<br>
-     <strong style="color:#3b82f6;">⚖️ FAIRNESS:</strong> Bias risk? What type? Vulnerable groups? Impossibility theorem?<br>
-     <strong style="color:#22c55e;">🔍 TRANSPARENCY:</strong> Black box? XAI needed? LIME/SHAP? Users informed?<br>
-     <strong style="color:#f59e0b;">👤 HUMAN OVERSIGHT:</strong> Which level? In/on/command? Meaningful human control?<br>
-     <strong style="color:#a855f7;">📋 REGULATION:</strong> AI Act risk level? DPIA? DPO? Provider/Deployer? Art. 22?<br>
-     <strong style="color:#ef4444;">👁️ SURVEILLANCE:</strong> Panopticon? Function creep? Chilling effect? Proportionality?<br>
-     <strong style="color:#06b6d4;">🌐 GLOBAL:</strong> Trustworthy AI? UNESCO? Ethics washing? Responsibility gap? IP?`;
-
   container.innerHTML = `
     <div style="max-width:950px;margin:0 auto;padding:24px 20px;">
       <header class="week-header">
         <div class="week-header-top">
-          <button class="back-btn" onclick="selectWeek(0)"><span>←</span><span>${t ? 'Geri' : 'Back'}</span></button>
-          <h2 class="week-title-main">${t ? '🎯 Case Study Tam Puan Rehberi' : '🎯 Case Study Full Marks Guide'}</h2>
+          <button class="back-btn" onclick="selectWeek(0)"><span>←</span><span>${t?'Geri':'Back'}</span></button>
+          <h2 class="week-title-main">🎯 ${t?'Case Study Tam Puan Rehberi':'Case Study Full Marks Guide'}</h2>
         </div>
       </header>
 
-      <!-- EXAM FORMAT -->
-      <div class="summary-section" style="background:linear-gradient(135deg,rgba(236,72,153,0.08),rgba(168,85,247,0.08));border:1px solid rgba(236,72,153,0.25);border-radius:16px;padding:28px;margin-top:14px;">
-        <h3 class="summary-section-title" style="color:#ec4899;font-size:1.3rem;">📋 ${t ? 'SINAV FORMATI' : 'EXAM FORMAT'}</h3>
-        ${examFormat}
+      <!-- ============ SECTION 0: EXAM FORMAT ============ -->
+      <div class="cs-section" style="--accent:236,72,153;">
+        <h3>📋 ${t?'SINAV FORMATI':'EXAM FORMAT'}</h3>
+        <div class="concept-grid">
+          <div class="concept-card" style="border-color:rgba(236,72,153,0.3);">
+            <div class="concept-card-title" style="color:#ec4899;">Q1: True/False — 18 ${t?'puan':'pts'}</div>
+            <div class="concept-card-text">
+              12 ${t?'soru':'questions'} × 1.5 ${t?'puan':'pts'}<br>
+              ${t?'• T/F seçimi: <strong>0.5p</strong><br>• Gerekçe: <strong>1.0p</strong><br>• ⚠️ Yanlış T/F = gerekçe doğru olsa bile <strong>0p!</strong>':'• T/F choice: <strong>0.5p</strong><br>• Justification: <strong>1.0p</strong><br>• ⚠️ Wrong T/F = even correct justification gets <strong>0p!</strong>'}
+            </div>
+          </div>
+          <div class="concept-card" style="border-color:rgba(168,85,247,0.3);">
+            <div class="concept-card-title" style="color:#a855f7;">Q2: Case Study — 12 ${t?'puan':'pts'}</div>
+            <div class="concept-card-text">
+              ${t?'1 gerçekçi AI senaryosu + 3-5 alt soru<br>Alt sorular farklı konuları test eder<br><strong>Bu sınavın %40\'ıdır!</strong>':'1 realistic AI scenario + 3-5 sub-questions<br>Sub-questions test different topics<br><strong>This is 40% of the exam!</strong>'}
+            </div>
+          </div>
+          <div class="concept-card" style="border-color:rgba(34,197,94,0.3);">
+            <div class="concept-card-title" style="color:#22c55e;">${t?'Geçme & Not':'Pass & Grade'}</div>
+            <div class="concept-card-text">
+              ${t?'Toplam: <strong>30p</strong> | Geçme: <strong>21p</strong><br>PI = (P-9)/(30-9)×10<br>Örn: 25p → <strong>7.6</strong>':'Total: <strong>30p</strong> | Pass: <strong>21p</strong><br>PI = (P-9)/(30-9)×10<br>Ex: 25p → <strong>7.6</strong>'}
+            </div>
+          </div>
+        </div>
       </div>
 
-      <!-- 5-STEP FRAMEWORK -->
-      <div class="summary-section" style="margin-top:24px;background:linear-gradient(135deg,rgba(102,126,234,0.08),rgba(118,75,162,0.08));border:1px solid rgba(102,126,234,0.25);border-radius:16px;padding:28px;">
-        <h3 class="summary-section-title" style="color:#667eea;font-size:1.3rem;">🏆 ${t ? 'TAM PUAN FORMÜLÜ — 5 Adım' : 'FULL MARKS FORMULA — 5 Steps'}</h3>
-        <p style="color:var(--text-muted);margin-bottom:20px;">${t ? 'Bu 5 adımı her case study sorusuna uygula!' : 'Apply these 5 steps to EVERY case study!'}</p>
-        <div style="display:flex;flex-direction:column;gap:16px;">${stepsHtml}</div>
+      <!-- ============ SECTION 1: THE 6-PILLAR PATTERN ============ -->
+      <div class="cs-section" style="--accent:102,126,234;">
+        <h3>🏆 ${t?'6 SÜTUN PATTERN — Her Soruya Uygula!':'THE 6-PILLAR PATTERN — Apply to Every Question!'}</h3>
+        <p class="cs-subtitle">${t?'Hangi senaryo gelirse gelsin, cevabını bu 6 bölüme ayır. Her bölüm yaklaşık <strong>2 puan</strong> eder.':'Whatever scenario comes, divide your answer into these 6 sections. Each is worth roughly <strong>2 points</strong>.'}</p>
+
+        <div class="cs-steps">
+          <div class="cs-step" style="--step-color:#ec4899;">
+            <div class="cs-step-num">1</div>
+            <div class="cs-step-content">
+              <div class="cs-step-title">${t?'SİSTEMİ TANIMLA':'DESCRIBE THE SYSTEM'} (~2p)</div>
+              <div class="cs-step-body">
+                ${t?'<strong>Ne:</strong> Teknolojinin adı, ne yapıyor, hangi veriyi işliyor<br><strong>Şablon:</strong> "Bu sistem bir [teknoloji türü]dür. [X veriyi] toplayarak [Y kararı] verir/destekler."<br><br><strong>⚡ İpucu:</strong> AI Act risk sınıflandırmasını da burada belirt!':'<strong>What:</strong> Name the technology, what it does, what data it processes<br><strong>Template:</strong> "This system is a [technology type]. It collects [X data] to make/support [Y decision]."<br><br><strong>⚡ Tip:</strong> Also mention the AI Act risk classification here!'}
+              </div>
+            </div>
+          </div>
+
+          <div class="cs-step" style="--step-color:#f59e0b;">
+            <div class="cs-step-num">2</div>
+            <div class="cs-step-content">
+              <div class="cs-step-title">${t?'AKTÖRLER & BAKIŞ AÇILARI':'STAKEHOLDERS & PERSPECTIVES'} (~2p)</div>
+              <div class="cs-step-body">
+                ${t?'<strong>Ne:</strong> Kim etkileniyor? Her aktörün farklı bakış açısını yaz (SCOT — Interpretive Flexibility)<br><strong>Şablon:</strong><br>• "[Aktör 1] bu sistemi [güvenlik/verimlilik] açısından desteklemektedir"<br>• "[Aktör 2] bu sistemi [gizlilik/ayrımcılık] açısından eleştirmektedir"<br>• "[Aktör 3] bu sistemden [doğrudan/dolaylı] etkilenmektedir çünkü..."<br><br><strong>⚡ Her zaman en az 3 aktör yaz!</strong>':'<strong>What:</strong> Who is affected? Write each actor\'s different perspective (SCOT — Interpretive Flexibility)<br><strong>Template:</strong><br>• "[Actor 1] supports this system for [security/efficiency]"<br>• "[Actor 2] criticizes this system for [privacy/discrimination]"<br>• "[Actor 3] is [directly/indirectly] affected because..."<br><br><strong>⚡ Always write at least 3 stakeholders!</strong>'}
+              </div>
+            </div>
+          </div>
+
+          <div class="cs-step" style="--step-color:#22c55e;">
+            <div class="cs-step-num">3</div>
+            <div class="cs-step-content">
+              <div class="cs-step-title">${t?'ETİK ANALİZ':'ETHICAL ANALYSIS'} (~2p)</div>
+              <div class="cs-step-body">
+                ${t?'<strong>Ne:</strong> Ethical lens\'leri kullanarak etik sorunları SENARYOYA bağla<br><strong>Şablon:</strong><br>• "<strong>Rights lens:</strong> Bu senaryoda [aktörün] [X hakkı] ihlal edilmektedir çünkü [somut neden]"<br>• "<strong>Justice lens:</strong> [Grup A] ve [Grup B] arasında eşitsiz etki vardır çünkü [neden]"<br>• "<strong>Utilitarian:</strong> [Fayda] ile [zarar] karşılaştırıldığında, [zarar] daha ağır basmaktadır"<br><br><strong>⚠️ EN KRİTİK KURAL:</strong><br>❌ "Privacy önemli bir etik ilkedir" → 0 PUAN (tanım)<br>✅ "Bu senaryoda taraftarların biyometrik verileri rızaları olmadan taranmaktadır ki bu gizlilik hakkının doğrudan ihlalidir" → TAM PUAN (uygulama)':'<strong>What:</strong> Apply ethical lenses TO THE SCENARIO<br><strong>Template:</strong><br>• "<strong>Rights:</strong> In this scenario, [actor\'s] [right X] is violated because [specific reason]"<br>• "<strong>Justice:</strong> There is unequal impact between [Group A] and [Group B] because [reason]"<br>• "<strong>Utilitarian:</strong> Comparing [benefit] with [harm], the [harm] outweighs"<br><br><strong>⚠️ THE CRITICAL RULE:</strong><br>❌ "Privacy is an important ethical principle" → 0 POINTS (definition)<br>✅ "In this scenario, fans\' biometric data is scanned without consent, directly violating privacy rights" → FULL POINTS (application)'}
+              </div>
+            </div>
+          </div>
+
+          <div class="cs-step" style="--step-color:#3b82f6;">
+            <div class="cs-step-num">4</div>
+            <div class="cs-step-content">
+              <div class="cs-step-title">${t?'YASAL ÇERÇEVE':'LEGAL FRAMEWORK'} (~2p)</div>
+              <div class="cs-step-body">
+                ${t?'<strong>Ne:</strong> GDPR + AI Act + (varsa) UNESCO kavramlarını senaryoya uygula<br><strong>Şablon:</strong><br>• "<strong>GDPR:</strong> Biyometrik veri Madde 9 kapsamında Özel Kategori Veridir. Bu senaryoda [X] nedeniyle [hukuki dayanak/rıza] sorunu vardır"<br>• "<strong>AI Act:</strong> Bu sistem [risk seviyesi] olarak sınıflandırılır çünkü [gerekçe]. [Provider/Deployer] uyumluluk yükümlülüklerini taşır"<br>• "<strong>DPIA:</strong> Büyük ölçekli sistematik izleme olduğundan GDPR Madde 35 uyarınca DPIA zorunludur"<br><br><strong>⚡ AI Act risk seviyesini + GDPR ilgili maddelerini mutlaka yaz!</strong>':'<strong>What:</strong> Apply GDPR + AI Act + (if relevant) UNESCO to the scenario<br><strong>Template:</strong><br>• "<strong>GDPR:</strong> Biometric data is Special Category under Art. 9. In this scenario, [X] creates a [legal basis/consent] issue"<br>• "<strong>AI Act:</strong> This system is classified as [risk level] because [reason]. The [Provider/Deployer] bears compliance obligations"<br>• "<strong>DPIA:</strong> As large-scale systematic monitoring, DPIA is mandatory under GDPR Art. 35"<br><br><strong>⚡ Always write AI Act risk level + relevant GDPR articles!</strong>'}
+              </div>
+            </div>
+          </div>
+
+          <div class="cs-step" style="--step-color:#a855f7;">
+            <div class="cs-step-num">5</div>
+            <div class="cs-step-content">
+              <div class="cs-step-title">${t?'TEKNİK RİSKLER & BIAS':'TECHNICAL RISKS & BIAS'} (~2p)</div>
+              <div class="cs-step-body">
+                ${t?'<strong>Ne:</strong> Algoritmik yanlılık, function creep, doğruluk sorunları<br><strong>Şablon:</strong><br>• "<strong>Representation Bias:</strong> Eğitim verisi [X grubu] yeterince temsil etmiyorsa, bu grupta hata oranı daha yüksek olacaktır"<br>• "<strong>Function Creep:</strong> [Orijinal amaç] için kurulan sistem zamanla [farklı amaç] için kullanılma riski taşır"<br>• "<strong>False positive/negative:</strong> Yanlış eşleşme [X sonuçlara] yol açabilir"<br><br><strong>⚡ En az 2 farklı risk türü yaz!</strong>':'<strong>What:</strong> Algorithmic bias, function creep, accuracy issues<br><strong>Template:</strong><br>• "<strong>Representation Bias:</strong> If training data underrepresents [group X], error rates will be higher for them"<br>• "<strong>Function Creep:</strong> System built for [original purpose] risks being used for [different purpose]"<br>• "<strong>False positive/negative:</strong> Misidentification could lead to [X consequences]"<br><br><strong>⚡ Write at least 2 different risk types!</strong>'}
+              </div>
+            </div>
+          </div>
+
+          <div class="cs-step" style="--step-color:#06b6d4;">
+            <div class="cs-step-num">6</div>
+            <div class="cs-step-content">
+              <div class="cs-step-title">${t?'TOPLUMSAL ETKİ & ÇÖZÜMLER':'SOCIETAL IMPACT & SOLUTIONS'} (~2p)</div>
+              <div class="cs-step-body">
+                ${t?'<strong>Ne:</strong> Büyük resmi çiz + somut çözümler öner<br><strong>Şablon:</strong><br>• "<strong>Panopticon etkisi:</strong> Sürekli gözetim bireylerin [X davranışını] olumsuz etkiler (chilling effect)"<br>• "<strong>Çözüm 1:</strong> [Teknik] — Privacy by Design / DPIA / XAI / Bias audit"<br>• "<strong>Çözüm 2:</strong> [Organizasyonel] — Human-in-the-loop / DPO / Ethics committee"<br>• "<strong>Çözüm 3:</strong> [Düzenleyici] — AI Act uyumluluğu / sunset clause / orantılılık"<br>• "<strong>Kritik değerlendirme:</strong> Bu çözümler [avantaj] sunarken [sınırlılık] da mevcuttur"<br><br><strong>🔑 Kritik değerlendirme = diğerlerinden ayıran adım!</strong>':'<strong>What:</strong> Paint the big picture + propose concrete solutions<br><strong>Template:</strong><br>• "<strong>Panopticon effect:</strong> Constant surveillance negatively affects [behavior X] (chilling effect)"<br>• "<strong>Solution 1:</strong> [Technical] — Privacy by Design / DPIA / XAI / Bias audit"<br>• "<strong>Solution 2:</strong> [Organizational] — Human-in-the-loop / DPO / Ethics committee"<br>• "<strong>Solution 3:</strong> [Regulatory] — AI Act compliance / sunset clause / proportionality"<br>• "<strong>Critical evaluation:</strong> While these solutions offer [advantage], [limitation] also exists"<br><br><strong>🔑 Critical evaluation = what separates you from others!</strong>'}
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <!-- MARKING CRITERIA -->
-      <div class="summary-section" style="margin-top:24px;background:linear-gradient(135deg,rgba(34,197,94,0.08),rgba(16,185,129,0.08));border:1px solid rgba(34,197,94,0.25);border-radius:16px;padding:28px;">
-        <h3 class="summary-section-title" style="color:#22c55e;font-size:1.3rem;">✅ ${t ? 'PUANLAMA KRİTERLERİ' : 'MARKING CRITERIA'}</h3>
-        ${markingCriteria}
+      <!-- ============ SECTION 2: MOCK EXAM SOLVED ============ -->
+      <div class="cs-section" style="--accent:251,191,36;">
+        <h3>📝 ${t?'MOCK SINAV ÇÖZÜMÜ — Adım Adım':'MOCK EXAM SOLVED — Step by Step'}</h3>
+        <div class="cs-scenario-box">
+          <div class="cs-scenario-label">${t?'SENARYO':'SCENARIO'}</div>
+          <p>${t?'Bir futbol stadyumu, güvenlik amaçlı <strong>Live Facial Recognition (LFR)</strong> sistemi kurmayı planlıyor. Sistem stadyuma giren <strong>tüm 70.000 taraftarı</strong> tarayacak, biyometrik şablonlar oluşturacak ve polis veritabanındaki aranan kişilerle eşleştirecek. Bir sivil haklar örgütü (<strong>"Liberté"</strong>) bu sisteme itiraz ediyor.':'A football stadium plans to deploy a <strong>Live Facial Recognition (LFR)</strong> system for security. The system would scan <strong>all 70,000 fans</strong> entering, create biometric templates, and match against a police watchlist. A civil liberties group (<strong>"Liberté"</strong>) is challenging this system.'}</p>
+        </div>
+
+        <div class="cs-walkthrough">
+          <div class="cs-walk-step">
+            <div class="cs-walk-header" onclick="this.parentElement.classList.toggle('open')">
+              <span class="cs-walk-badge" style="background:#ec4899;">1</span>
+              <span class="cs-walk-title">${t?'SİSTEM TANIMI':'SYSTEM DESCRIPTION'}</span>
+              <span class="cs-walk-points">~2p</span>
+              <span class="cs-walk-arrow">▼</span>
+            </div>
+            <div class="cs-walk-body">
+              <div class="cs-model-answer">
+                ${t?'<p>Bu sistem bir <strong>Live Facial Recognition (LFR)</strong> teknolojisidir. Stadyum girişlerindeki kameralar ile tüm taraftarların yüzlerini tarar, biyometrik yüz şablonları oluşturur ve bu şablonları polis veritabanındaki aranan kişiler listesiyle gerçek zamanlı olarak karşılaştırır.</p><p><strong>AI Act sınıflandırması:</strong> Kamusal alanda kolluk kuvvetleri tarafından gerçek zamanlı biyometrik tanıma kullanılması EU AI Act kapsamında <strong>Unacceptable Risk (Yasaklı)</strong> kategorisindedir — sadece sınırlı istisnai durumlarda (terör tehdidi, kayıp çocuk arama) izin verilir.</p><p><strong>Veri türü:</strong> Biyometrik veri — GDPR Madde 9 kapsamında <strong>Özel Kategori Veri</strong>dir ve işlenmesi varsayılan olarak YASAKTIR.</p>':'<p>This system uses <strong>Live Facial Recognition (LFR)</strong> technology. Cameras at stadium entrances scan all fans\' faces, create biometric face templates, and compare these in real-time against a police watchlist of wanted individuals.</p><p><strong>AI Act classification:</strong> Real-time biometric identification in public spaces by law enforcement is classified as <strong>Unacceptable Risk (Banned)</strong> under the EU AI Act — only permitted in narrow exceptions (terrorism, missing persons).</p><p><strong>Data type:</strong> Biometric data — classified as <strong>Special Category Data</strong> under GDPR Art. 9, processing is prohibited by default.</p>'}
+              </div>
+            </div>
+          </div>
+
+          <div class="cs-walk-step">
+            <div class="cs-walk-header" onclick="this.parentElement.classList.toggle('open')">
+              <span class="cs-walk-badge" style="background:#f59e0b;">2</span>
+              <span class="cs-walk-title">${t?'AKTÖRLER & BAKIŞ AÇILARI':'STAKEHOLDERS & PERSPECTIVES'}</span>
+              <span class="cs-walk-points">~2p</span>
+              <span class="cs-walk-arrow">▼</span>
+            </div>
+            <div class="cs-walk-body">
+              <div class="cs-model-answer">
+                ${t?'<p><strong>SCOT analizi — Interpretive Flexibility:</strong> Her aktör aynı teknolojiyi farklı yorumlar:</p><p>🔵 <strong>Polis & Stadyum yönetimi:</strong> Sistemi güvenlik ve verimlilik aracı olarak görür. "70.000 kişi arasından aranan suçluları anında tespit edebiliriz — geleneksel yöntemlerle bu imkansız."</p><p>🔴 <strong>Liberté (sivil haklar örgütü):</strong> Sistemi kitlesel gözetim aracı olarak eleştirir. "70.000 masum insanın biyometrik verisini rızaları olmadan toplamak orantısız bir müdahaledir."</p><p>🟡 <strong>Taraftarlar:</strong> Doğrudan etkilenen gruptur. Bir kısmı güvenlik hissiyle rahat ederken, diğerleri izlendiklerini bilerek stadyuma gitme davranışlarını değiştirebilir (Chilling Effect).</p><p>🟢 <strong>Azınlık grupları:</strong> Yüz tanıma teknolojisinin koyu tenli bireylerde daha yüksek hata oranına sahip olduğu kanıtlanmıştır — bu grup orantısız olarak yanlış eşleşme riski altındadır.</p>':'<p><strong>SCOT analysis — Interpretive Flexibility:</strong> Each actor interprets the same technology differently:</p><p>🔵 <strong>Police & Stadium management:</strong> See the system as a security and efficiency tool. "We can instantly identify wanted criminals among 70,000 — impossible with traditional methods."</p><p>🔴 <strong>Liberté (civil rights org):</strong> Criticizes the system as mass surveillance. "Collecting biometric data of 70,000 innocent people without consent is a disproportionate interference."</p><p>🟡 <strong>Fans:</strong> Directly affected group. Some feel safer, others may change their behavior knowing they are watched (Chilling Effect).</p><p>🟢 <strong>Minority groups:</strong> FRT has proven higher error rates for darker-skinned individuals — this group faces disproportionate risk of false matches.</p>'}
+              </div>
+            </div>
+          </div>
+
+          <div class="cs-walk-step">
+            <div class="cs-walk-header" onclick="this.parentElement.classList.toggle('open')">
+              <span class="cs-walk-badge" style="background:#22c55e;">3</span>
+              <span class="cs-walk-title">${t?'ETİK ANALİZ':'ETHICAL ANALYSIS'}</span>
+              <span class="cs-walk-points">~2p</span>
+              <span class="cs-walk-arrow">▼</span>
+            </div>
+            <div class="cs-walk-body">
+              <div class="cs-model-answer">
+                ${t?'<p><strong>Rights Lens:</strong> 70.000 taraftarın biyometrik verileri rızaları alınmadan işlenmektedir. Bu durum GDPR kapsamındaki <strong>gizlilik hakkını</strong> ve bireylerin <strong>otonomi hakkını</strong> doğrudan ihlal eder. Stadyuma girmek = rıza vermek DEĞİLDİR (GDPR "freely given" koşulu).</p><p><strong>Justice Lens:</strong> Yüz tanıma teknolojisi kanıtlanmış şekilde koyu tenli ve kadın bireylerde daha yüksek hata oranına sahiptir (<strong>Representation Bias</strong>). Bu, belirli demografik grupların yanlış eşleşme sonucu haksız yere sorgulanmasına yol açar — <strong>eşitsiz etki</strong>.</p><p><strong>Utilitarian Lens:</strong> 70.000 kişinin mahremiyetini ihlal ederek belki 1-2 aranan kişiyi yakalamak <strong>orantısızdır</strong>. Fayda/zarar oranı, tüm taraftarların temel haklarını feda etmeyi haklı kılmaz.</p><p><strong>Care Ethics:</strong> Savunmasız gruplar (azınlıklar, çocuklar) özel dikkat gerektirir. Sistem bu grupların özel ihtiyaçlarını göz önünde bulundurmamaktadır.</p>':'<p><strong>Rights Lens:</strong> Biometric data of 70,000 fans is processed without consent. This directly violates the <strong>right to privacy</strong> under GDPR and individuals\' <strong>autonomy</strong>. Entering a stadium ≠ giving consent (GDPR "freely given" condition).</p><p><strong>Justice Lens:</strong> FRT has proven higher error rates for darker-skinned and female individuals (<strong>Representation Bias</strong>). This leads to certain demographics being unfairly questioned — <strong>unequal impact</strong>.</p><p><strong>Utilitarian Lens:</strong> Violating the privacy of 70,000 to catch maybe 1-2 wanted persons is <strong>disproportionate</strong>. The benefit/harm ratio doesn\'t justify sacrificing everyone\'s fundamental rights.</p><p><strong>Care Ethics:</strong> Vulnerable groups (minorities, children) require special attention. The system doesn\'t account for their particular needs.</p>'}
+              </div>
+            </div>
+          </div>
+
+          <div class="cs-walk-step">
+            <div class="cs-walk-header" onclick="this.parentElement.classList.toggle('open')">
+              <span class="cs-walk-badge" style="background:#3b82f6;">4</span>
+              <span class="cs-walk-title">${t?'YASAL ÇERÇEVE':'LEGAL FRAMEWORK'}</span>
+              <span class="cs-walk-points">~2p</span>
+              <span class="cs-walk-arrow">▼</span>
+            </div>
+            <div class="cs-walk-body">
+              <div class="cs-model-answer">
+                ${t?'<p><strong>EU AI Act:</strong> Kamusal alanda kolluk kuvvetlerince gerçek zamanlı biyometrik tanıma <strong>Unacceptable Risk</strong> kategorisindedir ve YASAKLANMIŞTIR. Stadyum bir kamusal/yarı-kamusal alandır. Sadece ciddi terör tehdidi gibi dar istisnalarda yargı onayı ile kullanılabilir.</p><p><strong>GDPR Madde 9:</strong> Biyometrik veri <strong>Özel Kategori Veri</strong>dir. İşlenmesi varsayılan olarak yasaktır. "Stadyuma girme = rıza" argümanı geçersizdir çünkü GDPR rızanın "freely given, specific, informed, unambiguous" olmasını gerektirir — taraftarın tek alternatifi maça gitmemektir ki bu gerçek bir seçenek değildir.</p><p><strong>GDPR Madde 35 — DPIA:</strong> Büyük ölçekli biyometrik veri işleme <strong>yüksek riskli</strong>dir ve DPIA (Veri Koruma Etki Değerlendirmesi) yapılması ZORUNLUDUR.</p><p><strong>GDPR Madde 22:</strong> Otomatik eşleşme sonucu bir taraftarın durdurulması, bireyin hakları üzerinde yasal etki yaratan otomatik karar almadır. Bireyin <strong>insan müdahalesi talep etme hakkı</strong> vardır.</p>':'<p><strong>EU AI Act:</strong> Real-time biometric identification by law enforcement in public spaces is <strong>Unacceptable Risk</strong> — BANNED. The stadium is a public/semi-public space. Only narrow exceptions (serious terrorism) with judicial authorization are permitted.</p><p><strong>GDPR Art. 9:</strong> Biometric data is <strong>Special Category Data</strong>. Processing is prohibited by default. "Entering stadium = consent" is invalid because GDPR requires consent to be "freely given, specific, informed, unambiguous" — the fan\'s only alternative is not attending, which isn\'t a genuine choice.</p><p><strong>GDPR Art. 35 — DPIA:</strong> Large-scale biometric processing is <strong>high-risk</strong> and a DPIA is MANDATORY.</p><p><strong>GDPR Art. 22:</strong> Automated matching leading to a fan being stopped constitutes automated decision-making with legal effects. Individuals have the <strong>right to human intervention</strong>.</p>'}
+              </div>
+            </div>
+          </div>
+
+          <div class="cs-walk-step">
+            <div class="cs-walk-header" onclick="this.parentElement.classList.toggle('open')">
+              <span class="cs-walk-badge" style="background:#a855f7;">5</span>
+              <span class="cs-walk-title">${t?'TEKNİK RİSKLER & BIAS':'TECHNICAL RISKS & BIAS'}</span>
+              <span class="cs-walk-points">~2p</span>
+              <span class="cs-walk-arrow">▼</span>
+            </div>
+            <div class="cs-walk-body">
+              <div class="cs-model-answer">
+                ${t?'<p><strong>Representation Bias:</strong> Yüz tanıma modellerinin eğitim verisi çoğunlukla beyaz erkek yüzlerinden oluşmaktadır. Bu, koyu tenli bireylerde ve kadınlarda yanlış eşleşme (false positive) oranını 10-100 kat artırır. Stadyumda bu, masum bir azınlık taraftarının yanlışlıkla "aranan kişi" olarak işaretlenip güvenlik tarafından durdurulması anlamına gelir.</p><p><strong>Function Creep:</strong> Sistem "aranan suçluları tespit" için kurulsa da, zamanla bilet sahteciliği takibi → taraftar davranış analizi → ticari profilleme gibi orijinal amacı aşan kullanımlara kayabilir. Bu, GDPR\'ın <strong>Purpose Limitation</strong> ilkesinin ihlalidir.</p><p><strong>Accuracy & False Positives:</strong> %99 doğruluk bile 70.000 kişide 700 yanlış eşleşme demektir. Her yanlış eşleşme masum bir kişinin sorgulanması, gecikmesi ve potansiyel olarak küçük düşürülmesi anlamına gelir.</p>':'<p><strong>Representation Bias:</strong> FRT training data is predominantly white male faces. This increases false positive rates for darker-skinned individuals and women by 10-100x. At the stadium, this means an innocent minority fan could be falsely flagged as "wanted" and stopped by security.</p><p><strong>Function Creep:</strong> While built for "detecting criminals," the system could drift to ticket fraud → fan behavior analysis → commercial profiling. This violates GDPR\'s <strong>Purpose Limitation</strong> principle.</p><p><strong>Accuracy & False Positives:</strong> Even 99% accuracy means 700 false matches among 70,000. Each false match means an innocent person questioned, delayed, and potentially humiliated.</p>'}
+              </div>
+            </div>
+          </div>
+
+          <div class="cs-walk-step">
+            <div class="cs-walk-header" onclick="this.parentElement.classList.toggle('open')">
+              <span class="cs-walk-badge" style="background:#06b6d4;">6</span>
+              <span class="cs-walk-title">${t?'TOPLUMSAL ETKİ & ÇÖZÜMLER':'SOCIETAL IMPACT & SOLUTIONS'}</span>
+              <span class="cs-walk-points">~2p</span>
+              <span class="cs-walk-arrow">▼</span>
+            </div>
+            <div class="cs-walk-body">
+              <div class="cs-model-answer">
+                ${t?'<p><strong>Panopticon Etkisi:</strong> Sürekli izlenme bilinci, taraftarların stadyumdaki davranışlarını değiştirir. Tezahürat yapmaktan, politik pankart açmaktan kaçınma — ifade özgürlüğü üzerinde <strong>chilling effect</strong>.</p><p><strong>Gözetimin Normalleşmesi:</strong> Stadyumda kabul edilen gözetim, AVM\'ler → sokaklar → okullar şeklinde yaygınlaşarak toplumsal normalizasyona yol açar.</p><hr style="border-color:var(--border);margin:16px 0;"><p><strong>Çözüm Önerileri:</strong></p><p>🔧 <strong>Teknik:</strong> FRT yerine daha az invaziv alternatifler kullanılmalı (bilet QR kodu, metal dedektör). Privacy by Design ilkesiyle tasarlanmalı.</p><p>👤 <strong>Human-in-the-loop:</strong> Herhangi bir eşleşme durumunda, eğitimli güvenlik personeli son kararı vermelidir — otomatik durdurma YAPILMAMALIDIR.</p><p>📋 <strong>Düzenleyici:</strong> DPIA yapılmalı, DPO atanmalı, veri tutma süresi minimuma indirilmeli (maç bitiminde silinmeli), bağımsız denetim mekanizması kurulmalı.</p><p>⏰ <strong>Sunset Clause:</strong> Sistem belirli bir süre sonra otomatik olarak sona ermeli ve yeniden değerlendirilmelidir.</p><hr style="border-color:var(--border);margin:16px 0;"><p><strong>Kritik Değerlendirme:</strong> Bu çözümler güvenlik endişelerini tamamen ortadan kaldırmaz — bu bir <strong>güvenlik vs. gizlilik trade-off\'udur</strong>. Ancak proportionality ilkesi gereği, 70.000 kişinin temel haklarını ihlal eden bir sistem, daha az invaziv alternatifler varken meşrulaştırılamaz. Collingridge Dilemması bize bu teknolojiyi devreye sokmadan ÖNCE düşünmemiz gerektiğini hatırlatır.</p>':'<p><strong>Panopticon Effect:</strong> Awareness of constant surveillance changes fan behavior. Avoiding chanting, political banners — <strong>chilling effect</strong> on freedom of expression.</p><p><strong>Normalization of surveillance:</strong> Surveillance accepted at stadiums spreads to malls → streets → schools, leading to societal normalization.</p><hr style="border-color:var(--border);margin:16px 0;"><p><strong>Solutions:</strong></p><p>🔧 <strong>Technical:</strong> Use less invasive alternatives to FRT (ticket QR codes, metal detectors). Design with Privacy by Design principles.</p><p>👤 <strong>Human-in-the-loop:</strong> Any match must be reviewed by trained security — NO automatic stops.</p><p>📋 <strong>Regulatory:</strong> Conduct DPIA, appoint DPO, minimize data retention (delete after match), establish independent oversight.</p><p>⏰ <strong>Sunset clause:</strong> System should automatically expire and require re-evaluation.</p><hr style="border-color:var(--border);margin:16px 0;"><p><strong>Critical Evaluation:</strong> These solutions don\'t eliminate security concerns entirely — this is a <strong>security vs. privacy trade-off</strong>. But under proportionality, a system violating 70,000 fundamental rights cannot be justified when less invasive alternatives exist. The Collingridge Dilemma reminds us to think BEFORE deploying this technology.</p>'}
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <!-- COMMON MISTAKES -->
-      <div class="summary-section" style="margin-top:24px;background:linear-gradient(135deg,rgba(239,68,68,0.08),rgba(220,38,38,0.08));border:1px solid rgba(239,68,68,0.2);border-radius:16px;padding:28px;">
-        <h3 class="summary-section-title" style="color:#ef4444;font-size:1.3rem;">🚫 ${t ? 'EN SIK HATALAR' : 'COMMON MISTAKES'}</h3>
-        <div style="display:flex;flex-direction:column;gap:12px;">${mistakesHtml}</div>
+      <!-- ============ SECTION 3: QUICK REFERENCE ============ -->
+      <div class="cs-section" style="--accent:34,197,94;">
+        <h3>⚡ ${t?'HIZLI REFERANS — Sınavda Yanında Olsun':'QUICK REFERENCE — Mental Cheat Sheet'}</h3>
+        <div class="concept-card" style="border-color:rgba(34,197,94,0.3);">
+          <div class="concept-card-text" style="font-size:0.9rem;line-height:2.2;">
+            ${t?'<strong style="color:#ec4899;">1️⃣ SİSTEM:</strong> Ne yapıyor? Hangi veri? AI Act risk seviyesi?<br><strong style="color:#f59e0b;">2️⃣ AKTÖRLER:</strong> Kim destekliyor? Kim eleştiriyor? Kim zarar görüyor? (SCOT)<br><strong style="color:#22c55e;">3️⃣ ETİK:</strong> Hangi haklar ihlal? Eşitsiz etki var mı? Fayda/zarar oranı? (Lens\'ler)<br><strong style="color:#3b82f6;">4️⃣ YASAL:</strong> GDPR (Art.9/22/35) + AI Act risk + DPIA + rıza sorunu<br><strong style="color:#a855f7;">5️⃣ RİSKLER:</strong> Bias türü? Function creep? False positive/negative?<br><strong style="color:#06b6d4;">6️⃣ ÇÖZÜM:</strong> Teknik + Organizasyonel + Düzenleyici + Kritik değerlendirme':'<strong style="color:#ec4899;">1️⃣ SYSTEM:</strong> What does it do? What data? AI Act risk level?<br><strong style="color:#f59e0b;">2️⃣ ACTORS:</strong> Who supports? Who criticizes? Who is harmed? (SCOT)<br><strong style="color:#22c55e;">3️⃣ ETHICS:</strong> Which rights violated? Unequal impact? Benefit/harm? (Lenses)<br><strong style="color:#3b82f6;">4️⃣ LEGAL:</strong> GDPR (Art.9/22/35) + AI Act risk + DPIA + consent<br><strong style="color:#a855f7;">5️⃣ RISKS:</strong> Bias type? Function creep? False positive/negative?<br><strong style="color:#06b6d4;">6️⃣ SOLUTIONS:</strong> Technical + Organizational + Regulatory + Critical evaluation'}
+          </div>
+        </div>
       </div>
 
-      <!-- CONCEPT CHECKLIST -->
-      <div class="summary-section" style="margin-top:24px;background:linear-gradient(135deg,rgba(251,191,36,0.08),rgba(245,158,11,0.08));border:1px solid rgba(251,191,36,0.25);border-radius:16px;padding:28px;">
-        <h3 class="summary-section-title" style="color:#fbbf24;font-size:1.3rem;">⚡ ${t ? 'KAVRAM KONTROL LİSTESİ' : 'CONCEPT CHECKLIST'}</h3>
-        <p style="color:var(--text-muted);margin-bottom:16px;">${t ? 'Her senaryoda bu listeyi kontrol et:' : 'Check this list for every scenario:'}</p>
-        <div class="concept-card"><div class="concept-card-text" style="font-size:0.88rem;line-height:2.0;">${checklist}</div></div>
+      <!-- ============ SECTION 4: COMMON MISTAKES ============ -->
+      <div class="cs-section" style="--accent:239,68,68;margin-bottom:40px;">
+        <h3>🚫 ${t?'YAPMA BUNLARI! (0 Puan Garantisi)':'DON\'T DO THESE! (Guaranteed 0 Points)'}</h3>
+        <div style="display:grid;gap:10px;">
+          ${[
+            {en:'Writing "GDPR is important for privacy" — DEFINE + APPLY to scenario!', tr:'Sadece "GDPR gizlilik için önemlidir" yazmak — TANIMLA + SENARYOYA UYGULA!'},
+            {en:'Only one perspective — always discuss AT LEAST 3 stakeholders', tr:'Tek perspektif — her zaman EN AZ 3 aktör tartış'},
+            {en:'No solutions — every problem needs concrete recommendations', tr:'Çözüm önermemek — her problem somut öneri ister'},
+            {en:'Listing every concept you know — only use RELEVANT ones', tr:'Bildiğin her kavramı sıralamak — sadece İLGİLİ olanları kullan'},
+            {en:'No critical evaluation — discuss trade-offs for high marks!', tr:'Kritik değerlendirme yapmamak — yüksek not için trade-off tartış!'},
+            {en:'Messy structure — use the 6 pillars as numbered sections!', tr:'Yapısız cevap — 6 sütunu numaralı bölümler olarak kullan!'}
+          ].map(m => `<div style="padding:12px 16px;background:rgba(239,68,68,0.06);border:1px solid rgba(239,68,68,0.15);border-radius:10px;color:var(--text-muted);font-size:0.88rem;">❌ ${t?m.tr:m.en}</div>`).join('')}
+        </div>
       </div>
 
-      <!-- PRACTICE SCENARIOS -->
-      <div class="summary-section" style="margin-top:24px;background:linear-gradient(135deg,rgba(6,182,212,0.08),rgba(59,130,246,0.08));border:1px solid rgba(6,182,212,0.25);border-radius:16px;padding:28px;">
-        <h3 class="summary-section-title" style="color:#06b6d4;font-size:1.3rem;">🎮 ${t ? 'PRATİK SENARYOLAR' : 'PRACTICE SCENARIOS'}</h3>
-        <p style="color:var(--text-muted);margin-bottom:16px;">💡 ${t ? 'Tıklayarak cevap anahtarını gör!' : 'Click to reveal the answer key!'}</p>
-        <div style="display:flex;flex-direction:column;gap:14px;">${scenariosHtml}</div>
-      </div>
-
-      <!-- GOLDEN PHRASES -->
-      <div class="summary-section" style="margin-top:24px;margin-bottom:40px;background:linear-gradient(135deg,rgba(251,191,36,0.08),rgba(245,158,11,0.08));border:1px solid rgba(251,191,36,0.25);border-radius:16px;padding:28px;">
-        <h3 class="summary-section-title" style="color:#fbbf24;font-size:1.3rem;">🔑 ${t ? 'ALTIN İFADELER' : 'GOLDEN PHRASES'}</h3>
-        <div class="concept-card"><div class="concept-card-text" style="font-size:0.88rem;line-height:2.2;">${goldenPhrases}</div></div>
-      </div>
     </div>`;
 
-  // Add toggle CSS
+  // Inject styles for this page
   if (!document.getElementById('csStyles')) {
     const s = document.createElement('style');
     s.id = 'csStyles';
-    s.textContent = '.pa.open{max-height:600px!important}';
+    s.textContent = `
+      .cs-section{margin-top:24px;background:linear-gradient(135deg,rgba(var(--accent),0.06),rgba(var(--accent),0.02));border:1px solid rgba(var(--accent),0.2);border-radius:16px;padding:28px;}
+      .cs-section h3{font-size:1.3rem;font-weight:700;margin-bottom:16px;color:rgb(var(--accent));}
+      .cs-subtitle{color:var(--text-muted);margin-bottom:20px;font-size:0.92rem;line-height:1.6;}
+      .cs-steps{display:flex;flex-direction:column;gap:14px;}
+      .cs-step{display:flex;gap:16px;padding:20px;background:var(--bg-card);border:1px solid var(--border);border-radius:12px;transition:border-color 0.3s;}
+      .cs-step:hover{border-color:var(--step-color);}
+      .cs-step-num{width:44px;height:44px;min-width:44px;border-radius:12px;background:var(--step-color);color:#fff;display:flex;align-items:center;justify-content:center;font-size:1.2rem;font-weight:800;}
+      .cs-step-content{flex:1;}
+      .cs-step-title{font-weight:700;font-size:1rem;margin-bottom:10px;color:var(--step-color);}
+      .cs-step-body{font-size:0.88rem;line-height:1.8;color:var(--text-muted);}
+      .cs-scenario-box{background:var(--bg-card);border:2px solid rgba(251,191,36,0.3);border-radius:14px;padding:22px;margin-bottom:20px;position:relative;}
+      .cs-scenario-label{position:absolute;top:-12px;left:20px;background:#fbbf24;color:#000;padding:2px 14px;border-radius:8px;font-size:0.75rem;font-weight:700;letter-spacing:1px;}
+      .cs-scenario-box p{color:var(--text-secondary);font-size:0.92rem;line-height:1.8;margin-top:8px;}
+      .cs-walkthrough{display:flex;flex-direction:column;gap:12px;}
+      .cs-walk-step{background:var(--bg-card);border:1px solid var(--border);border-radius:12px;overflow:hidden;transition:all 0.3s;}
+      .cs-walk-header{display:flex;align-items:center;gap:12px;padding:16px 20px;cursor:pointer;user-select:none;}
+      .cs-walk-header:hover{background:rgba(255,255,255,0.02);}
+      .cs-walk-badge{width:32px;height:32px;min-width:32px;border-radius:8px;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:0.9rem;}
+      .cs-walk-title{flex:1;font-weight:600;font-size:0.95rem;}
+      .cs-walk-points{font-size:0.78rem;color:var(--text-muted);background:rgba(255,255,255,0.05);padding:3px 10px;border-radius:6px;}
+      .cs-walk-arrow{font-size:0.7rem;color:var(--text-muted);transition:transform 0.3s;}
+      .cs-walk-step.open .cs-walk-arrow{transform:rotate(180deg);}
+      .cs-walk-body{max-height:0;overflow:hidden;transition:max-height 0.5s ease;}
+      .cs-walk-step.open .cs-walk-body{max-height:2000px;}
+      .cs-model-answer{padding:0 20px 20px 64px;font-size:0.88rem;line-height:1.85;color:var(--text-muted);}
+      .cs-model-answer p{margin-bottom:12px;}
+      .cs-model-answer hr{border-color:var(--border);margin:16px 0;}
+      @media(max-width:768px){
+        .cs-step{flex-direction:column;gap:10px;}
+        .cs-model-answer{padding:0 16px 16px 16px;}
+      }
+    `;
     document.head.appendChild(s);
   }
 }
