@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RRI Study Hub — Responsible Research & Innovation</title>
+    <meta name="description" content="Interactive study platform for Responsible Research and Innovation exam preparation">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Mobile Menu Toggle -->
+    <button id="menuToggle" class="menu-toggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+    </button>
+
+    <!-- Sidebar -->
+    <aside id="sidebar" class="sidebar">
+        <div class="sidebar-header">
+            <div class="logo-container">
+                <div class="logo">🎓</div>
+                <div class="logo-glow"></div>
+            </div>
+            <h1 class="app-title">RRI Study Hub</h1>
+            <p class="app-subtitle" data-en="Responsible Research & Innovation" data-tr="Sorumlu Araştırma & İnovasyon">Responsible Research & Innovation</p>
+        </div>
+
+        <nav class="week-nav" id="weekNav">
+            <button class="week-btn active" data-week="0" id="weekBtn0">
+                <span class="week-icon">🏠</span>
+                <div class="week-info">
+                    <span class="week-label" data-en="Dashboard" data-tr="Ana Sayfa">Dashboard</span>
+                </div>
+            </button>
+            <button class="week-btn" data-week="1" id="weekBtn1">
+                <span class="week-icon">1</span>
+                <div class="week-info">
+                    <span class="week-label" data-en="Technology & Society" data-tr="Teknoloji & Toplum">Technology & Society</span>
+                    <div class="week-progress-mini"><div class="week-progress-mini-fill" id="weekProg1"></div></div>
+                </div>
+            </button>
+            <button class="week-btn" data-week="2" id="weekBtn2">
+                <span class="week-icon">2</span>
+                <div class="week-info">
+                    <span class="week-label" data-en="Regulation & Governance" data-tr="Düzenleme & Yönetişim">Regulation & Governance</span>
+                    <div class="week-progress-mini"><div class="week-progress-mini-fill" id="weekProg2"></div></div>
+                </div>
+            </button>
+            <button class="week-btn" data-week="3" id="weekBtn3">
+                <span class="week-icon">3</span>
+                <div class="week-info">
+                    <span class="week-label" data-en="Data Protection & DPIA" data-tr="Veri Koruma & DPIA">Data Protection & DPIA</span>
+                    <div class="week-progress-mini"><div class="week-progress-mini-fill" id="weekProg3"></div></div>
+                </div>
+            </button>
+            <button class="week-btn" data-week="4" id="weekBtn4">
+                <span class="week-icon">4</span>
+                <div class="week-info">
+                    <span class="week-label" data-en="FAIR & Bias" data-tr="FAIR & Yanlılık">FAIR & Bias</span>
+                    <div class="week-progress-mini"><div class="week-progress-mini-fill" id="weekProg4"></div></div>
+                </div>
+            </button>
+            <button class="week-btn" data-week="5" id="weekBtn5">
+                <span class="week-icon">5</span>
+                <div class="week-info">
+                    <span class="week-label" data-en="Transparency & XAI" data-tr="Şeffaflık & XAI">Transparency & XAI</span>
+                    <div class="week-progress-mini"><div class="week-progress-mini-fill" id="weekProg5"></div></div>
+                </div>
+            </button>
+            <button class="week-btn" data-week="6" id="weekBtn6">
+                <span class="week-icon">6</span>
+                <div class="week-info">
+                    <span class="week-label" data-en="Privacy & Surveillance" data-tr="Gizlilik & Gözetleme">Privacy & Surveillance</span>
+                    <div class="week-progress-mini"><div class="week-progress-mini-fill" id="weekProg6"></div></div>
+                </div>
+            </button>
+            <button class="week-btn" data-week="7" id="weekBtn7">
+                <span class="week-icon">7</span>
+                <div class="week-info">
+                    <span class="week-label" data-en="Human-Centric AI" data-tr="İnsan Odaklı AI">Human-Centric AI</span>
+                    <div class="week-progress-mini"><div class="week-progress-mini-fill" id="weekProg7"></div></div>
+                </div>
+            </button>
+            <button class="week-btn" data-week="casestudy" id="weekBtnCase">
+                <span class="week-icon">📝</span>
+                <div class="week-info">
+                    <span class="week-label" data-en="Case Study Guide" data-tr="Senaryo Rehberi">Case Study Guide</span>
+                </div>
+            </button>
+        </nav>
+
+        <div class="sidebar-footer">
+            <button id="langToggle" class="lang-btn">
+                <span class="lang-icon">🌐</span>
+                <span id="langText">Türkçe</span>
+            </button>
+            <div class="overall-progress-container">
+                <div class="progress-header">
+                    <span data-en="Overall Progress" data-tr="Genel İlerleme">Overall Progress</span>
+                    <span id="overallProgressText">0%</span>
+                </div>
+                <div class="progress-bar-track">
+                    <div class="progress-bar-fill" id="overallProgressFill"></div>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Overlay for mobile -->
+    <div id="sidebarOverlay" class="sidebar-overlay"></div>
+
+    <!-- Main Content -->
+    <main id="mainContent" class="main-content">
+        <!-- Dashboard View -->
+        <div id="dashboardView" class="view active">
+            <div class="dashboard-hero">
+                <div class="hero-content">
+                    <h1 class="hero-title" data-en="Ready for the Exam? 🚀" data-tr="Sınava Hazır Mısın? 🚀">Ready for the Exam? 🚀</h1>
+                    <p class="hero-subtitle" data-en="Master all 7 weeks of Responsible Research & Innovation" data-tr="Sorumlu Araştırma & İnovasyon'un 7 haftasını öğren">Master all 7 weeks of Responsible Research & Innovation</p>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat-card">
+                        <div class="stat-number" id="statFlashcards">0</div>
+                        <div class="stat-label" data-en="Flashcards Mastered" data-tr="Kart Öğrenildi">Flashcards Mastered</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="statQuizzes">0%</div>
+                        <div class="stat-label" data-en="Avg Quiz Score" data-tr="Ort. Quiz Puanı">Avg Quiz Score</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="statWeeks">0/7</div>
+                        <div class="stat-label" data-en="Weeks Studied" data-tr="Hafta Çalışıldı">Weeks Studied</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dashboard-grid" id="dashboardGrid">
+                <!-- Week cards generated by JS -->
+            </div>
+
+            <!-- Case Study Masterclass Button -->
+            <div class="mock-exam-section">
+                <button id="openCaseStudy" class="mock-exam-btn" style="background:linear-gradient(135deg,rgba(236,72,153,0.12),rgba(168,85,247,0.12));border-color:rgba(236,72,153,0.3);">
+                    <span class="mock-icon">🎯</span>
+                    <div class="mock-info">
+                        <span class="mock-title" data-en="Case Study Masterclass (12 pts)" data-tr="Senaryo Çözüm Rehberi (12 puan)">Case Study Masterclass (12 pts)</span>
+                        <span class="mock-desc" data-en="Step-by-step guide to full marks on open-ended scenarios" data-tr="Açık uçlu senaryolardan tam puan alma rehberi">Step-by-step guide to full marks on open-ended scenarios</span>
+                    </div>
+                    <span class="mock-arrow">→</span>
+                </button>
+            </div>
+
+            <!-- Mock Exam Button -->
+            <div class="mock-exam-section">
+                <button id="startMockExam" class="mock-exam-btn">
+                    <span class="mock-icon">📋</span>
+                    <div class="mock-info">
+                        <span class="mock-title" data-en="Full Mock Exam" data-tr="Tam Mock Sınav">Full Mock Exam</span>
+                        <span class="mock-desc" data-en="20 questions from all weeks — timed practice" data-tr="Tüm haftalardan 20 soru — süre ile pratik">20 questions from all weeks — timed practice</span>
+                    </div>
+                    <span class="mock-arrow">→</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Week View -->
+        <div id="weekView" class="view">
+            <header class="week-header">
+                <div class="week-header-top">
+                    <button id="backToDash" class="back-btn">
+                        <span>←</span>
+                        <span data-en="Back" data-tr="Geri">Back</span>
+                    </button>
+                    <h2 id="weekTitle" class="week-title-main"></h2>
+                </div>
+                <div class="mode-tabs" id="modeTabs">
+                    <button class="mode-tab active" data-mode="summary">
+                        <span class="tab-icon">📖</span>
+                        <span data-en="Summary" data-tr="Özet">Summary</span>
+                    </button>
+                    <button class="mode-tab" data-mode="flashcards">
+                        <span class="tab-icon">🃏</span>
+                        <span data-en="Flashcards" data-tr="Kartlar">Flashcards</span>
+                    </button>
+                    <button class="mode-tab" data-mode="quiz">
+                        <span class="tab-icon">📝</span>
+                        <span data-en="Quiz" data-tr="Quiz">Quiz</span>
+                    </button>
+                    <button class="mode-tab" data-mode="terms">
+                        <span class="tab-icon">📚</span>
+                        <span data-en="Key Terms" data-tr="Terimler">Key Terms</span>
+                    </button>
+                </div>
+            </header>
+
+            <div id="modeContent" class="mode-content">
+                <!-- Dynamic content rendered by JS -->
+            </div>
+        </div>
+
+        <!-- Case Study Tutorial View -->
+        <div id="caseStudyView" class="view">
+            <div id="caseStudyContent">
+                <!-- Generated by JS -->
+            </div>
+        </div>
+
+        <!-- Mock Exam View -->
+        <div id="mockExamView" class="view">
+            <div id="mockExamContent">
+                <!-- Generated by JS -->
+            </div>
+        </div>
+    </main>
+
+    <script src="app.js"></script>
+    <script src="casestudy.js"></script>
+</body>
+</html>
